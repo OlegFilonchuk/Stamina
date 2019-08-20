@@ -3,10 +3,11 @@
 	background-color: #eee;
 	margin: auto;
 	font-size: 25px;
-	/* white-space: nowrap; */
 	outline: none;
 	overflow: hidden;
 	position: relative;
+	border: 2px solid black;
+	border-radius: 5px;
 }
 
 .text-input {
@@ -28,8 +29,8 @@
 	top: 0;
 	left: calc(50% - 2px);
 	height: 100%;
-	width: 3px;
-	background-color: #fff;
+	width: 1px;
+	background-color: #000;
 	z-index: 0;
 }
 
@@ -39,7 +40,6 @@
 	left: 0;
 	height: 100%;
 	width: calc(50% - 2px);
-	background-color: #bbb;
 	z-index: 2;
-	opacity: .5;
+	background: linear-gradient(90deg, rgba(255,255,255, .99), rgba(255,255,255, .7))
 }
