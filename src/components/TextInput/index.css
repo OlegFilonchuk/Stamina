@@ -1,6 +1,6 @@
 .text-input-container {
 	width: 80%;
-	background-color: #eee;
+	background-color: rgb(149, 211, 252);
 	margin: auto;
 	font-size: 25px;
 	outline: none;
@@ -13,10 +13,10 @@
 .text-input {
 	position: relative;
 	white-space: nowrap;
-	transform: translateX();
 	font-family: 'Ubuntu mono', monospace;
 	margin-left: 50%;
 	user-select: none;
+	transition: all .1s;
 	z-index: 1;
 }
 
@@ -41,5 +41,5 @@
 	height: 100%;
 	width: calc(50% - 2px);
 	z-index: 2;
-	background: linear-gradient(90deg, rgb(197, 197, 197), rgba(197, 197, 197, .7))
+	background: linear-gradient(90deg, rgb(197, 197, 197), rgba(197, 197, 197, .7));
 }
