@@ -31,14 +31,24 @@ export default class TextInput extends Component {
 		this.inputRef.current.focus()
 	}
 
+	restart = () => {
+		console.log('restart')
+		this.setState({chars: 0})
+		this.inputRef.current.style.transform = 'translateX(0)'
+		this.inputRef.current.focus()
+	}
+
 	render() {
 		return (
-			<div className="text-input-container">
-				<div className="text-input" onKeyPress={this.handleKeyPress} tabIndex="-1" ref={this.inputRef}>
-					{text1}
+			<div>
+				<div className="text-input-container">
+					<div className="text-input" onKeyPress={this.handleKeyPress} tabIndex="-1" ref={this.inputRef}>
+						{text1}
+					</div>
+					<div className="cover"></div>
+					<div className="separator"></div>
 				</div>
-				<div className="cover"></div>
-				<div className="separator"></div>
+				<button onClick={this.restart}>Restart</button>
 			</div>
 		)
 	}
