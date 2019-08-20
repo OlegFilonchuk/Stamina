@@ -1,0 +1,13 @@
+.text-input-container {
+	width: 80%;
+	background-color: #eee;
+	margin: auto;
+	font-size: 25px;
+	/* white-space: nowrap; */
+	overflow: hidden;
+}
+
+.text-input {
+	white-space: nowrap;
+	transform: translateX()
+}
