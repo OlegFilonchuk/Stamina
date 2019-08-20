@@ -6,7 +6,7 @@ export default class TextInput extends Component {
 
 	state = {
 		str: text1,
-		chars: 0
+		chars: 0,
 	}
 
 	inputRef = React.createRef()
@@ -17,6 +17,8 @@ export default class TextInput extends Component {
 		if (chars === str.length) return
 
 		const offset = (chars + 1) * 12.5
+		const target = str[chars]
+		if (ev.key !== target) return 
 
 		ev.target.style.transform = `translateX(-${offset}px)`
 
