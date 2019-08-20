@@ -6,16 +6,40 @@
 	/* white-space: nowrap; */
 	outline: none;
 	overflow: hidden;
+	position: relative;
 }
 
 .text-input {
+	position: relative;
 	white-space: nowrap;
 	transform: translateX();
-	font-family: 'Ubuntu mono';
+	font-family: 'Ubuntu mono', monospace;
 	margin-left: 50%;
 	user-select: none;
+	z-index: 1;
 }
 
 .text-input:focus {
 	outline: none;
+}
+
+.separator {
+	position: absolute;
+	top: 0;
+	left: calc(50% - 2px);
+	height: 100%;
+	width: 3px;
+	background-color: #fff;
+	z-index: 0;
+}
+
+.cover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: calc(50% - 2px);
+	background-color: #bbb;
+	z-index: 2;
+	opacity: .5;
 }

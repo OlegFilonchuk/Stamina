@@ -11,9 +11,15 @@ export default class TextInput extends Component {
 
 	inputRef = React.createRef()
 
-	handleKeyPress = (ev) => {
-		const offset = this.state.chars * 12.5;
+	handleKeyPress = ev => {
+		const { str, chars } = this.state
+
+		if (chars === str.length) return
+
+		const offset = (chars + 1) * 12.5
+
 		ev.target.style.transform = `translateX(-${offset}px)`
+
 		this.setState((prevState) => ({
 			chars: prevState.chars + 1
 		}))
@@ -25,10 +31,12 @@ export default class TextInput extends Component {
 
 	render() {
 		return (
-			<div className="text-input-container" ref={this.ref}>
+			<div className="text-input-container">
 				<div className="text-input" onKeyPress={this.handleKeyPress} tabIndex="-1" ref={this.inputRef}>
 					{text1}
 				</div>
+				<div className="cover"></div>
+				<div className="separator"></div>
 			</div>
 		)
 	}
