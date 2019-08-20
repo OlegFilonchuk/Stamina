@@ -29,10 +29,10 @@ export default class TextInput extends Component {
 
 	componentDidMount() {
 		this.inputRef.current.focus()
+		document.addEventListener('click', () => this.inputRef.current.focus())
 	}
 
 	restart = () => {
-		console.log('restart')
 		this.setState({chars: 0})
 		this.inputRef.current.style.transform = 'translateX(0)'
 		this.inputRef.current.focus()
