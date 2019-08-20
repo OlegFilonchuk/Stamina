@@ -4,10 +4,18 @@
 	margin: auto;
 	font-size: 25px;
 	/* white-space: nowrap; */
+	outline: none;
 	overflow: hidden;
 }
 
 .text-input {
 	white-space: nowrap;
-	transform: translateX()
+	transform: translateX();
+	font-family: 'Ubuntu mono';
+	margin-left: 50%;
+	user-select: none;
+}
+
+.text-input:focus {
+	outline: none;
 }
