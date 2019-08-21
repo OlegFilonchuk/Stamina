@@ -1,10 +1,12 @@
-import React from 'react';
+import React from 'react'
 import TextInput from './components/TextInput/'
-import './App.css';
+import Header from './components/Header'
+import './App.css'
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
+      <Header/>
       <TextInput/>
     </div>
   );

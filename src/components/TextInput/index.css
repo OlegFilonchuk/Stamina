@@ -1,11 +1,13 @@
-.text-input-container {
+.cont {
 	width: 80%;
-	background-color: rgb(149, 211, 252);
-	margin: auto;
-	font-size: 25px;
-	outline: none;
-	overflow: hidden;
+	margin: 50px auto;
+
+}
+.text-input-container {
 	position: relative;
+	background-color: rgb(149, 211, 252);
+	font-size: 25px;
+	overflow: hidden;
 	border: 2px solid black;
 	border-radius: 5px;
 }
@@ -14,6 +16,7 @@
 	position: relative;
 	white-space: nowrap;
 	font-family: 'Ubuntu mono', monospace;
+	text-align: left;
 	margin-left: 50%;
 	user-select: none;
 	transition: all .1s;
@@ -42,4 +45,19 @@
 	width: calc(50% - 2px);
 	z-index: 2;
 	background: linear-gradient(90deg, rgb(197, 197, 197), rgba(197, 197, 197, .7));
+}
+
+.navbar {
+	text-align: left;
+}
+
+.restart-button {
+	outline: none;
+	border: 1px solid grey;
+	border-radius: 2px;
+	background-color: #eee;
+}
+
+.restart-button:hover {
+	cursor: pointer;
 }

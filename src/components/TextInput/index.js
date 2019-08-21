@@ -55,7 +55,7 @@ export default class TextInput extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="cont">
 				<div className="text-input-container">
 					<div className="text-input" onKeyPress={this.handleKeyPress} tabIndex="-1" ref={this.inputRef}>
 						{text1}
@@ -63,7 +63,10 @@ export default class TextInput extends Component {
 					<div className="cover"></div>
 					<div className="separator"></div>
 				</div>
-				<button onClick={this.restart}>Restart</button>
+				<div className="navbar">
+					<button onClick={this.restart} className="restart-button">Restart</button>
+					
+				</div>
 			</div>
 		)
 	}
