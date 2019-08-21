@@ -2,3 +2,14 @@
 	height: 160px;
 	background: rgb(65, 216, 208);
 }
+
+.restart-button {
+	outline: none;
+	border: 1px solid grey;
+	border-radius: 2px;
+	background-color: #eee;
+}
+
+.restart-button:hover {
+	cursor: pointer;
+}

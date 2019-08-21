@@ -63,10 +63,6 @@ export default class TextInput extends Component {
 					<div className="cover"></div>
 					<div className="separator"></div>
 				</div>
-				<div className="navbar">
-					<button onClick={this.restart} className="restart-button">Restart</button>
-					
-				</div>
 			</div>
 		)
 	}

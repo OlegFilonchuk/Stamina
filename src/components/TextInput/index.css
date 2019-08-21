@@ -46,18 +46,3 @@
 	z-index: 2;
 	background: linear-gradient(90deg, rgb(197, 197, 197), rgba(197, 197, 197, .7));
 }
-
-.navbar {
-	text-align: left;
-}
-
-.restart-button {
-	outline: none;
-	border: 1px solid grey;
-	border-radius: 2px;
-	background-color: #eee;
-}
-
-.restart-button:hover {
-	cursor: pointer;
-}
