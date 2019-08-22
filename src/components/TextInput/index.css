@@ -57,3 +57,23 @@
 .restart-button:hover {
 	cursor: pointer;
 }
+
+.pressed-key {
+	background-color: #000;
+	color: #eee;
+	font-size: 35px;
+	line-height: 100px;
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+	margin: auto;
+	transition: opacity .05s ease-in;
+}
+
+.active {
+	opacity: 1;
+}
+
+.inactive {
+	opacity: 0;
+}

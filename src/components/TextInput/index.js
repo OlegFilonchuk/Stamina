@@ -13,6 +13,7 @@ export default class TextInput extends Component {
 	}
 
 	inputRef = React.createRef()
+	pressedKeyRef = React.createRef()
 
 	handleKeyPress = ev => {
 		const { str, chars, mistakes } = this.state
@@ -23,6 +24,8 @@ export default class TextInput extends Component {
 		}
 
 		this.setState({pressedKey: ev.key})
+		this.pressedKeyRef.current.classList.toggle('inactive')
+		setTimeout(() => this.pressedKeyRef.current.classList.toggle('inactive'), 150)
 
 		const offset = (chars + 1) * 12.5 //need to calculate 12.5 automatically
 		
@@ -59,6 +62,10 @@ export default class TextInput extends Component {
 		this.inputRef.current.focus()
 	}
 
+	showPressedKey = () => {
+
+	}
+
 	render() {
 		const {pressedKey} = this.state
 
@@ -71,10 +78,12 @@ export default class TextInput extends Component {
 					<div className="cover"></div>
 					<div className="separator"></div>
 				</div>
-				
+
 				<button onClick={this.restart} className="restart-button">Restart</button>
 
-				<PressedKey pressedKey={pressedKey}/>
+				<div className="pressed-key inactive" ref={this.pressedKeyRef}>
+					{pressedKey}
+				</div>
 			</div>
 		)
 	}
