@@ -26,3 +26,15 @@
 	opacity: 0.01;
 	transition: opacity 300ms ease-in;
 }
+
+.pressed {
+	transition: opacity .3s ease-in;
+}
+
+.active {
+	opacity: 1;
+}
+
+.inactive {
+	opacity: 0;
+}

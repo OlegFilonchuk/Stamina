@@ -1,29 +1,25 @@
-import React, { useState } from 'react'
-import { CSSTransition } from 'react-transition-group'
+import React, { useState, createRef } from 'react'
 import './index.css'
 
 export default function PressedKey() {
 
-	const [pressedKey, setPressedKey] = useState(false)
+	// const [pressedKey, setPressedKey] = useState(false)
+
+	const ref = createRef()
 
 	const onClick = () => {
-		setPressedKey(true)
-		console.log(this.state.pressedKey)
+		// setPressedKey(!pressedKey)
+		ref.current.classList.toggle('inactive')
+		setTimeout(() => ref.current.classList.toggle('inactive'), 300)
 	}
 
 	return (
 		<div>
 			<button onClick={onClick}>press me</button>
 
-			<CSSTransition
-				in={this.state.pressedKey}
-				timeout={500}
-				classNames="pressed-key"
-			>
-				<div>
-					{pressedKey}
-				</div>
-			</CSSTransition>
+			<div className="pressed inactive" ref={ref}>
+				{'pressedKey.toString()'}
+			</div>
 		</div>
 	)
 }
