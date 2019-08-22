@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {text1} from '../../constants'
+import PressedKey from './../PressedKey';
 import './index.css'
 
 export default class TextInput extends Component {
@@ -7,7 +8,8 @@ export default class TextInput extends Component {
 	state = {
 		str: text1,
 		chars: 0,
-		errors: 0
+		errors: 0,
+		pressedKey: null
 	}
 
 	inputRef = React.createRef()
@@ -18,6 +20,8 @@ export default class TextInput extends Component {
 		if (chars === str.length) {
 			return
 		}
+
+		this.setState({pressedKey: ev.key})
 
 		const offset = (chars + 1) * 12.5
 		
@@ -54,6 +58,8 @@ export default class TextInput extends Component {
 	}
 
 	render() {
+		const {pressedKey} = this.state
+
 		return (
 			<div className="cont">
 				<div className="text-input-container">
@@ -63,6 +69,9 @@ export default class TextInput extends Component {
 					<div className="cover"></div>
 					<div className="separator"></div>
 				</div>
+				<button onClick={this.restart} className="restart-button">Restart</button>
+
+				<PressedKey pressedKey={pressedKey}/>
 			</div>
 		)
 	}
