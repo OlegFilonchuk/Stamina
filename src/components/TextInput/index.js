@@ -8,23 +8,25 @@ export default class TextInput extends Component {
 	state = {
 		str: text1,
 		chars: 0,
-		errors: 0,
+		mistakes: 0,
 		pressedKey: null
 	}
 
 	inputRef = React.createRef()
 
 	handleKeyPress = ev => {
-		const { str, chars, errors } = this.state
+		const { str, chars, mistakes } = this.state
 
+		//check the end of text
 		if (chars === str.length) {
 			return
 		}
 
 		this.setState({pressedKey: ev.key})
 
-		const offset = (chars + 1) * 12.5
+		const offset = (chars + 1) * 12.5 //need to calculate 12.5 automatically
 		
+		//mistakes handling
 		if (ev.key !== str[chars]) {
 			this.setState((prevState) => ({
 				errors: prevState.errors + 1
@@ -40,9 +42,9 @@ export default class TextInput extends Component {
 			chars: prevState.chars + 1
 		}))
 
-		//check end of text
+		//check the end of text
 		if (chars === str.length-1) {
-			console.log(`You made ${errors} mistakes`)
+			console.log(`You made ${mistakes} mistakes`)
 		}
 	}
 	
@@ -69,6 +71,7 @@ export default class TextInput extends Component {
 					<div className="cover"></div>
 					<div className="separator"></div>
 				</div>
+				
 				<button onClick={this.restart} className="restart-button">Restart</button>
 
 				<PressedKey pressedKey={pressedKey}/>
