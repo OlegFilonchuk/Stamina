@@ -1,13 +1,29 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
 import './index.css'
 
-export default class PressedKey extends Component {
-	render() {
+export default function PressedKey() {
 
-		return (
-			<div className="pressed-key" hidden={!this.props.pressedKey}>
-				{this.props.pressedKey}
-			</div>
-		)
+	const [pressedKey, setPressedKey] = useState(false)
+
+	const onClick = () => {
+		setPressedKey(true)
+		console.log(this.state.pressedKey)
 	}
+
+	return (
+		<div>
+			<button onClick={onClick}>press me</button>
+
+			<CSSTransition
+				in={this.state.pressedKey}
+				timeout={500}
+				classNames="pressed-key"
+			>
+				<div>
+					{pressedKey}
+				</div>
+			</CSSTransition>
+		</div>
+	)
 }
