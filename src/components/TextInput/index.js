@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import {text1} from '../../constants'
-import PressedKey from './../PressedKey';
+import {lesson1 as text} from '../../constants'
 import './index.css'
 
 export default class TextInput extends Component {
 
 	state = {
-		str: text1,
+		str: text,
 		chars: 0,
 		mistakes: 0,
 		pressedKey: null
@@ -25,7 +24,7 @@ export default class TextInput extends Component {
 
 		this.setState({pressedKey: ev.key})
 		this.pressedKeyRef.current.classList.toggle('inactive')
-		setTimeout(() => this.pressedKeyRef.current.classList.toggle('inactive'), 150)
+		setTimeout(() => this.pressedKeyRef.current.classList.toggle('inactive'), 250)
 
 		const offset = (chars + 1) * 12.5 //need to calculate 12.5 automatically
 		
@@ -67,13 +66,13 @@ export default class TextInput extends Component {
 	}
 
 	render() {
-		const {pressedKey} = this.state
+		const {pressedKey, str} = this.state
 
 		return (
 			<div className="cont">
 				<div className="text-input-container">
 					<div className="text-input" onKeyPress={this.handleKeyPress} tabIndex="-1" ref={this.inputRef}>
-						{text1}
+						{str}
 					</div>
 					<div className="cover"></div>
 					<div className="separator"></div>
