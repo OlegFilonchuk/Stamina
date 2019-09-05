@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as lessons from '../../constants'
 import { connect } from 'react-redux'
-import { selectLesson } from '../../AC'
+import { selectLesson, restart } from '../../AC'
 
 class LessonSelect extends Component {
 
@@ -10,10 +10,13 @@ class LessonSelect extends Component {
 	}
 
 	handleChange = ev => {
+		const { restart, selectLesson } = this.props
+
 		this.setState({
 			value: ev.target.value
 		})
-		this.props.selectLesson(ev.target.value)
+		restart()
+		selectLesson(ev.target.value)
 	}
 
 	render() {
@@ -31,4 +34,4 @@ class LessonSelect extends Component {
 	}
 }
 
-export default connect(null, {selectLesson})(LessonSelect)
+export default connect(null, {selectLesson, restart})(LessonSelect)

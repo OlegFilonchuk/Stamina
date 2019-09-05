@@ -72,8 +72,6 @@ class TextInput extends Component {
 					<div className="separator"></div>
 				</div>
 
-				<button onClick={this.restart} className="restart-button">Restart</button>
-
 				<div className="pressed-key inactive" ref={this.pressedKeyRef}>
 					{pressedKey}
 				</div>
