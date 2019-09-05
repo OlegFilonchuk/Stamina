@@ -16,7 +16,6 @@ class TextInput extends Component {
 		const { lesson, session } = this.props
 		const { pressedChars, mistakes } = session
 
-
 		//check the end of text
 		if (pressedChars === lesson.length) {
 			return
@@ -25,11 +24,11 @@ class TextInput extends Component {
 		this.setState({pressedKey: ev.key})
 		this.pressedKeyRef.current.classList.toggle('inactive')
 		setTimeout(() => this.pressedKeyRef.current.classList.toggle('inactive'), 250)
-		
-		// const charWidth = this.inputRef.current.clientWidth / lesson.length
-		//TODO: calculate width of 1 character!!!
-		const offset = (pressedChars + 1) * 12.5 //need to calculate 12.5 automatically
-		
+
+		//calculating offset to move
+		const charWidth = this.inputRef.current.scrollWidth / lesson.length
+		const offset = (pressedChars + 1) * charWidth
+
 		//mistakes handling
 		if (ev.key !== lesson[pressedChars]) {
 			this.props.mistake()
@@ -45,7 +44,7 @@ class TextInput extends Component {
 			console.log(`You made ${mistakes} mistakes`)
 		}
 	}
-	
+
 	componentDidMount() {
 		this.inputRef.current.focus()
 		// document.addEventListener('click', () => this.inputRef.current.focus())
@@ -58,8 +57,8 @@ class TextInput extends Component {
 
 	render() {
 		const { pressedKey } = this.state
-		const { lesson } = this.props  
-		
+		const { lesson } = this.props
+
 		if (this.inputRef.current && this.props.session.restarted) {
 			this.restart()
 		}
@@ -70,8 +69,8 @@ class TextInput extends Component {
 					<div className="text-input" onKeyPress={this.handleKeyPress} tabIndex="-1" ref={this.inputRef}>
 						{ lesson }
 					</div>
-					<div className="cover"></div>
-					<div className="separator"></div>
+					<div className="cover"/>
+					<div className="separator"/>
 				</div>
 
 				<div className="pressed-key inactive" ref={this.pressedKeyRef}>

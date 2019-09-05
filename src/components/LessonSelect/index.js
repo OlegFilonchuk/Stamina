@@ -6,7 +6,7 @@ import { selectLesson, restart } from '../../AC'
 class LessonSelect extends Component {
 
 	state = {
-		value: lessons.text1
+		value: lessons[0]
 	}
 
 	handleChange = ev => {

@@ -17,7 +17,7 @@
 	position: relative;
 	white-space: nowrap;
 	font-family: 'Ubuntu mono', monospace;
-	text-align: center;
+	text-align: left;
 	margin-left: 50%;
 	user-select: none;
 	transition: all .1s;
@@ -31,7 +31,7 @@
 .separator {
 	position: absolute;
 	top: 0;
-	left: calc(50% - 2px);
+	left: calc(50% - 1px);
 	height: 100%;
 	width: 1px;
 	background-color: #000;
@@ -43,7 +43,7 @@
 	top: 0;
 	left: 0;
 	height: 100%;
-	width: calc(50% - 2px);
+	width: calc(50% - 1px);
 	z-index: 2;
 	background: linear-gradient(90deg, rgb(197, 197, 197), rgba(197, 197, 197, .7));
 }
