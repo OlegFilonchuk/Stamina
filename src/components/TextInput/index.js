@@ -62,7 +62,8 @@ class TextInput extends Component {
 	}
 
 	render() {
-		const {pressedKey, str} = this.state
+		const { pressedKey } = this.state
+		const str = this.props.lesson  
 
 		return (
 			<div className="cont">
