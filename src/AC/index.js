@@ -1,6 +1,6 @@
 export const restart = () => {
 	return {
-		type: 'RESTART',
+		type: 'RESTART'
 	}
 }
 
