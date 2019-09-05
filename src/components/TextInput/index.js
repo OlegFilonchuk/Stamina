@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { type } from '../../AC'
 import './index.css'
 
 class TextInput extends Component {
 
 	state = {
-		chars: 0,
-		mistakes: 0,
+		// chars: 0,
+		// mistakes: 0,
 		pressedKey: null
 	}
 
@@ -14,11 +15,12 @@ class TextInput extends Component {
 	pressedKeyRef = React.createRef()
 
 	handleKeyPress = ev => {
-		const { chars, mistakes } = this.state
-		const str = this.props.lesson
+		// const { chars, mistakes } = this.state
+		const { lesson, session } = this.props
+		const { pressedChars, mistakes} = session
 
 		//check the end of text
-		if (chars === str.length) {
+		if (pressedChars === lesson.length) {
 			return
 		}
 
@@ -26,13 +28,14 @@ class TextInput extends Component {
 		this.pressedKeyRef.current.classList.toggle('inactive')
 		setTimeout(() => this.pressedKeyRef.current.classList.toggle('inactive'), 250)
 
-		const offset = (chars + 1) * 12.5 //need to calculate 12.5 automatically
+		const offset = (pressedChars + 1) * 12.5 //need to calculate 12.5 automatically
 		
 		//mistakes handling
-		if (ev.key !== str[chars]) {
-			this.setState(prevState => ({
-				mistakes: prevState.mistakes + 1
-			}))
+		if (ev.key !== lesson[pressedChars]) {
+			// this.setState(prevState => ({
+			// 	mistakes: prevState.mistakes + 1
+			// }))
+			
 			console.log('wrong!')
 			return
 		}
@@ -40,12 +43,10 @@ class TextInput extends Component {
 		//move caret
 		ev.target.style.transform = `translateX(-${offset}px)`
 
-		this.setState(prevState => ({
-			chars: prevState.chars + 1
-		}))
+		this.props.type()
 
 		//check the end of text
-		if (chars === str.length-1) {
+		if (pressedChars === lesson.length-1) {
 			console.log(`You made ${mistakes} mistakes`)
 		}
 	}
@@ -56,20 +57,20 @@ class TextInput extends Component {
 	}
 
 	restart = () => {
-		this.setState({chars: 0, errors: 0})
+		// this.setState({chars: 0, mistakes: 0})
 		this.inputRef.current.style.transform = 'translateX(0)'
 		this.inputRef.current.focus()
 	}
 
 	render() {
 		const { pressedKey } = this.state
-		const str = this.props.lesson  
+		const { lesson } = this.props  
 
 		return (
 			<div className="cont">
 				<div className="text-input-container">
 					<div className="text-input" onKeyPress={this.handleKeyPress} tabIndex="-1" ref={this.inputRef}>
-						{str}
+						{ lesson }
 					</div>
 					<div className="cover"></div>
 					<div className="separator"></div>
@@ -85,8 +86,13 @@ class TextInput extends Component {
 	}
 }
 
-const mapStateToProps = ({ lesson }) => ({
-	lesson
+const mapStateToProps = ({ lesson, session }) => ({
+	lesson,
+	session
 })
 
-export default connect(mapStateToProps)(TextInput)
+const mapDispatchToProps = {
+	type
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TextInput)

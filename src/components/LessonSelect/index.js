@@ -20,7 +20,7 @@ class LessonSelect extends Component {
 		return (
 			<div>
 				<label>
-					Chose a lesson:
+					Select a lesson:
 					<select value={this.state.value} onChange={this.handleChange}>
 						<option value={lessons.text1}>lesson 0</option>
 						<option value={lessons.lesson1}>lesson 1</option>

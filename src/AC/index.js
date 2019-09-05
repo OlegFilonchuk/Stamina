@@ -4,6 +4,16 @@ export const restart = () => {
 	}
 }
 
+export const type = () => {
+	return {
+		type: 'TYPE',
+	}
+}
+
+export const mistakes = () => {
+	return
+}
+
 export const selectLesson = lesson => {
 	return {
 		type: 'LESSON_SELECTION',
