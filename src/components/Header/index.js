@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import LessonSelect from '../LessonSelect'
 import './index.css'
 
 export default class Header extends Component {
@@ -7,6 +8,7 @@ export default class Header extends Component {
 		return (
 			<div className="header">
 				<button>Start</button>
+				<LessonSelect />
 			</div>
 		)
 	}

@@ -30,7 +30,7 @@ class TextInput extends Component {
 		
 		//mistakes handling
 		if (ev.key !== str[chars]) {
-			this.setState((prevState) => ({
+			this.setState(prevState => ({
 				mistakes: prevState.mistakes + 1
 			}))
 			console.log('wrong!')
@@ -40,7 +40,7 @@ class TextInput extends Component {
 		//move caret
 		ev.target.style.transform = `translateX(-${offset}px)`
 
-		this.setState((prevState) => ({
+		this.setState(prevState => ({
 			chars: prevState.chars + 1
 		}))
 
@@ -52,7 +52,7 @@ class TextInput extends Component {
 	
 	componentDidMount() {
 		this.inputRef.current.focus()
-		document.addEventListener('click', () => this.inputRef.current.focus())
+		// document.addEventListener('click', () => this.inputRef.current.focus())
 	}
 
 	restart = () => {

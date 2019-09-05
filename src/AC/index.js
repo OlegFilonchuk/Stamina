@@ -4,7 +4,7 @@ export const restart = () => {
 	}
 }
 
-export const selectLesson = (lesson) => {
+export const selectLesson = lesson => {
 	return {
 		type: 'LESSON_SELECTION',
 		payload: {
