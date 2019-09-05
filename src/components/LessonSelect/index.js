@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import * as lessons from '../../constants'
+import { lessons } from '../../constants'
 import { connect } from 'react-redux'
 import { selectLesson, restart } from '../../AC'
 
@@ -19,14 +19,17 @@ class LessonSelect extends Component {
 		selectLesson(ev.target.value)
 	}
 
+	getOptions = (lessons) => {
+		return lessons.map((item, i) => <option value={item}>Lesson {i+1}</option>)
+	}
+
 	render() {
 		return (
 			<div>
 				<label>
 					Select a lesson:
 					<select value={this.state.value} onChange={this.handleChange}>
-						<option value={lessons.text1}>lesson 0</option>
-						<option value={lessons.lesson1}>lesson 1</option>
+						{this.getOptions(lessons)}
 					</select>
 				</label>
 			</div>

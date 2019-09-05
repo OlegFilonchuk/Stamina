@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { type, mistake, restart } from '../../AC'
+import { type, mistake } from '../../AC'
 import './index.css'
 
 class TextInput extends Component {
