@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import {lesson1 as text} from '../../constants'
+import { connect } from 'react-redux'
 import './index.css'
 
-export default class TextInput extends Component {
+class TextInput extends Component {
 
 	state = {
-		str: text,
 		chars: 0,
 		mistakes: 0,
 		pressedKey: null
@@ -15,7 +14,8 @@ export default class TextInput extends Component {
 	pressedKeyRef = React.createRef()
 
 	handleKeyPress = ev => {
-		const { str, chars, mistakes } = this.state
+		const { chars, mistakes } = this.state
+		const str = this.props.lesson
 
 		//check the end of text
 		if (chars === str.length) {
@@ -31,11 +31,11 @@ export default class TextInput extends Component {
 		//mistakes handling
 		if (ev.key !== str[chars]) {
 			this.setState((prevState) => ({
-				errors: prevState.errors + 1
+				mistakes: prevState.mistakes + 1
 			}))
 			console.log('wrong!')
 			return
-		} 
+		}
 
 		//move caret
 		ev.target.style.transform = `translateX(-${offset}px)`
@@ -61,10 +61,6 @@ export default class TextInput extends Component {
 		this.inputRef.current.focus()
 	}
 
-	showPressedKey = () => {
-
-	}
-
 	render() {
 		const {pressedKey, str} = this.state
 
@@ -87,3 +83,9 @@ export default class TextInput extends Component {
 		)
 	}
 }
+
+const mapStateToProps = ({ lesson }) => ({
+	lesson
+})
+
+export default connect(mapStateToProps)(TextInput)
