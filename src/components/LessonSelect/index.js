@@ -20,7 +20,7 @@ class LessonSelect extends Component {
 	}
 
 	getOptions = (lessons) => {
-		return lessons.map((item, i) => <option value={item}>Lesson {i+1}</option>)
+		return lessons.map((item, i) => <option value={item} key={i}>Lesson {i+1}</option>)
 	}
 
 	render() {

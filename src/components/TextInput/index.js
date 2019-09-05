@@ -25,7 +25,9 @@ class TextInput extends Component {
 		this.setState({pressedKey: ev.key})
 		this.pressedKeyRef.current.classList.toggle('inactive')
 		setTimeout(() => this.pressedKeyRef.current.classList.toggle('inactive'), 250)
-
+		
+		// const charWidth = this.inputRef.current.clientWidth / lesson.length
+		//TODO: calculate width of 1 character!!!
 		const offset = (pressedChars + 1) * 12.5 //need to calculate 12.5 automatically
 		
 		//mistakes handling

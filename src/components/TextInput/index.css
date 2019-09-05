@@ -3,6 +3,7 @@
 	margin: 50px auto;
 
 }
+
 .text-input-container {
 	position: relative;
 	background-color: rgb(149, 211, 252);
@@ -16,7 +17,7 @@
 	position: relative;
 	white-space: nowrap;
 	font-family: 'Ubuntu mono', monospace;
-	text-align: left;
+	text-align: center;
 	margin-left: 50%;
 	user-select: none;
 	transition: all .1s;
