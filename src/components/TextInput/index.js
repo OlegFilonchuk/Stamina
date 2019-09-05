@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { type } from '../../AC'
+import { type, mistake, restart } from '../../AC'
 import './index.css'
 
 class TextInput extends Component {
 
 	state = {
-		// chars: 0,
-		// mistakes: 0,
 		pressedKey: null
 	}
 
@@ -15,7 +13,6 @@ class TextInput extends Component {
 	pressedKeyRef = React.createRef()
 
 	handleKeyPress = ev => {
-		// const { chars, mistakes } = this.state
 		const { lesson, session } = this.props
 		const { pressedChars, mistakes} = session
 
@@ -32,17 +29,12 @@ class TextInput extends Component {
 		
 		//mistakes handling
 		if (ev.key !== lesson[pressedChars]) {
-			// this.setState(prevState => ({
-			// 	mistakes: prevState.mistakes + 1
-			// }))
-			
-			console.log('wrong!')
+			this.props.mistake()
 			return
 		}
 
 		//move caret
 		ev.target.style.transform = `translateX(-${offset}px)`
-
 		this.props.type()
 
 		//check the end of text
@@ -58,6 +50,7 @@ class TextInput extends Component {
 
 	restart = () => {
 		// this.setState({chars: 0, mistakes: 0})
+		this.props.restart()
 		this.inputRef.current.style.transform = 'translateX(0)'
 		this.inputRef.current.focus()
 	}
@@ -92,7 +85,9 @@ const mapStateToProps = ({ lesson, session }) => ({
 })
 
 const mapDispatchToProps = {
-	type
+	type,
+	mistake,
+	restart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TextInput)

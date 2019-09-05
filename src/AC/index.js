@@ -6,12 +6,14 @@ export const restart = () => {
 
 export const type = () => {
 	return {
-		type: 'TYPE',
+		type: 'TYPE'
 	}
 }
 
-export const mistakes = () => {
-	return
+export const mistake = () => {
+	return {
+		type: 'MISTAKE'
+	}
 }
 
 export const selectLesson = lesson => {
