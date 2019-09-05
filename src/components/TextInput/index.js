@@ -14,7 +14,8 @@ class TextInput extends Component {
 
 	handleKeyPress = ev => {
 		const { lesson, session } = this.props
-		const { pressedChars, mistakes} = session
+		const { pressedChars, mistakes } = session
+
 
 		//check the end of text
 		if (pressedChars === lesson.length) {
@@ -49,8 +50,6 @@ class TextInput extends Component {
 	}
 
 	restart = () => {
-		// this.setState({chars: 0, mistakes: 0})
-		this.props.restart()
 		this.inputRef.current.style.transform = 'translateX(0)'
 		this.inputRef.current.focus()
 	}
@@ -58,6 +57,10 @@ class TextInput extends Component {
 	render() {
 		const { pressedKey } = this.state
 		const { lesson } = this.props  
+		
+		if (this.inputRef.current && this.props.session.restarted) {
+			this.restart()
+		}
 
 		return (
 			<div className="cont">
@@ -87,7 +90,6 @@ const mapStateToProps = ({ lesson, session }) => ({
 const mapDispatchToProps = {
 	type,
 	mistake,
-	restart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TextInput)

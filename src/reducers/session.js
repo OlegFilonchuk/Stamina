@@ -1,7 +1,7 @@
 const getInitialState = () => ({
 	pressedChars: 0,
 	mistakes: 0,
-	offset: 0
+	restarted: true
 })
 
 export default (state=getInitialState(), action) => {
@@ -14,7 +14,8 @@ export default (state=getInitialState(), action) => {
 		case 'TYPE':
 			return {
 				...state,
-				pressedChars: state.pressedChars + 1 
+				restarted: false, 
+				pressedChars: state.pressedChars + 1
 			}
 
 		case 'MISTAKE': 
