@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { type, mistake } from '../../AC'
 import './index.css'
 
-class TextInput extends Component<{lesson:string, session:any, mistake:any, type:any}> {
+class TextInput extends Component<{lesson:string, session:any, mistake:any, type:any}, {pressedKey:any, offset:number|null}> {
 
 	state = {
 		pressedKey: null,
@@ -22,8 +22,8 @@ class TextInput extends Component<{lesson:string, session:any, mistake:any, type
 			return
 		}
 
-		this.pressedKeyRef.current.classList.toggle('inactive')
-		setTimeout(() => this.pressedKeyRef.current.classList.toggle('inactive'), 250)
+		this.pressedKeyRef.current && this.pressedKeyRef.current.classList.toggle('inactive')
+		setTimeout(() => this.pressedKeyRef.current && this.pressedKeyRef.current.classList.toggle('inactive'), 250)
 
 		//mistakes handling
 		if (ev.key !== lesson[pressedChars]) {
@@ -32,8 +32,8 @@ class TextInput extends Component<{lesson:string, session:any, mistake:any, type
 		}
 
 		//calculating offset to move
-		const charWidth = this.inputRef.current.scrollWidth / lesson.length
-		const offset = (pressedChars + 1) * charWidth
+		const charWidth = this.inputRef.current && this.inputRef.current.scrollWidth / lesson.length
+		const offset = charWidth && (pressedChars + 1) * charWidth
 		this.setState({pressedKey: ev.key, offset: offset})
 
 		//move caret
@@ -46,7 +46,8 @@ class TextInput extends Component<{lesson:string, session:any, mistake:any, type
 	}
 
 	componentDidMount() {
-		this.inputRef.current.focus()
+		const node = this.inputRef.current
+		node && node.focus()
 	}
 
 	static getDerivedStateFromProps (nextProps:any) {
@@ -54,7 +55,8 @@ class TextInput extends Component<{lesson:string, session:any, mistake:any, type
 	}
 
 	restart = () => {
-		this.inputRef.current.focus()
+		const node = this.inputRef.current
+		node && node.focus()
 	}
 
 	render() {
@@ -82,12 +84,12 @@ class TextInput extends Component<{lesson:string, session:any, mistake:any, type
 	}
 }
 
-const mapStateToProps = ({ lesson, session }) => ({
+const mapStateToProps = ({ lesson, session }:any) => ({
 	lesson,
 	session
 })
 
-const mapDispatchToProps = {
+const mapDispatchToProps:any = {
 	type,
 	mistake,
 }
