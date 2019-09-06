@@ -1,19 +1,43 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
-import { type, mistake } from '../../AC'
+import { Action, bindActionCreators, Dispatch } from 'redux'
+import { typeAction, mistakeAction, SessionState } from '../../reducers/session'
+import { StoreState } from '../../store'
 import './index.css'
 
-class TextInput extends Component<{lesson:string, session:any, mistake:any, type:any}, {pressedKey:any, offset:number|null}> {
+interface IState {
+    pressedKey: string | undefined;
+    offset: number;
+}
 
-	state = {
-		pressedKey: null,
-		offset: 0
+interface ReduxProps {
+	lesson: string;
+	session: SessionState;
+}
+
+interface DispatchProps {
+	mistake(): void;
+	type(): void;
+}
+
+type Props = ReduxProps & DispatchProps;
+
+class TextInput extends Component<Props, IState> {
+
+	private readonly inputRef: any;
+	private readonly pressedKeyRef: any;
+
+	constructor(props: Props) {
+		super(props);
+		this.state = {
+			pressedKey: undefined,
+			offset: 0
+		};
+		this.inputRef = createRef();
+		this.pressedKeyRef = createRef();
 	}
 
-	inputRef = React.createRef<HTMLDivElement>()
-	pressedKeyRef = React.createRef<HTMLDivElement>()
-
-	handleKeyPress = (ev:any) => {
+	handleKeyPress = (ev: React.KeyboardEvent) => {
 		const { lesson, session } = this.props
 		const { pressedChars, mistakes } = session
 
@@ -34,6 +58,7 @@ class TextInput extends Component<{lesson:string, session:any, mistake:any, type
 		//calculating offset to move
 		const charWidth = this.inputRef.current && this.inputRef.current.scrollWidth / lesson.length
 		const offset = charWidth && (pressedChars + 1) * charWidth
+
 		this.setState({pressedKey: ev.key, offset: offset})
 
 		//move caret
@@ -50,8 +75,11 @@ class TextInput extends Component<{lesson:string, session:any, mistake:any, type
 		node && node.focus()
 	}
 
-	static getDerivedStateFromProps (nextProps:any) {
-		return nextProps.session.pressedChars === 0 && {offset: 0}
+	static getDerivedStateFromProps (nextProps: Props, prevState: IState): IState | null {
+		return nextProps.session.pressedChars === 0 ? {
+			...prevState,
+			offset: 0
+		} : null
 	}
 
 	restart = () => {
@@ -84,14 +112,20 @@ class TextInput extends Component<{lesson:string, session:any, mistake:any, type
 	}
 }
 
-const mapStateToProps = ({ lesson, session }:any) => ({
-	lesson,
-	session
-})
-
-const mapDispatchToProps:any = {
-	type,
-	mistake,
+const mapStateToProps = (state: StoreState): ReduxProps => {
+	return {
+		lesson: state.lessonState.lesson,
+		session: state.sessionState
+	}
 }
+
+const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps =>  bindActionCreators(
+	{
+		type: () => typeAction(),
+		mistake: () => mistakeAction()
+	},
+	dispatch
+);
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(TextInput)

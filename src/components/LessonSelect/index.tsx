@@ -1,15 +1,26 @@
 import React, { Component } from 'react'
 import { lessons } from '../../constants'
 import { connect } from 'react-redux'
-import { selectLesson, restart } from '../../AC'
+import { Action, Dispatch, bindActionCreators } from 'redux'
+import { selectLessonAction } from '../../reducers/lesson'
+import { restartAction } from '../../reducers/session'
 
-class LessonSelect extends Component<{restart:any, selectLesson:any}> {
+interface DispatchProps {
+	restart(): void;
+	selectLesson(value: string): void;
+}
 
-	state = {
+interface IState {
+	value: string;
+}
+
+class LessonSelect extends Component<DispatchProps, IState> {
+
+	state: IState = {
 		value: lessons[0]
 	}
 
-	handleChange = (ev:any) => {
+	handleChange = (ev:React.ChangeEvent<HTMLSelectElement>) => {
 		const { restart, selectLesson } = this.props
 
 		this.setState({
@@ -37,4 +48,12 @@ class LessonSelect extends Component<{restart:any, selectLesson:any}> {
 	}
 }
 
-export default connect(null, {selectLesson, restart})(LessonSelect)
+const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => bindActionCreators(
+	{
+		selectLesson: (value: string) => selectLessonAction(value),
+		restart: () => restartAction()
+	},
+	dispatch
+);
+
+export default connect(null, mapDispatchToProps)(LessonSelect)

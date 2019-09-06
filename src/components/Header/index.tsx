@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import LessonSelect from '../LessonSelect'
 import { connect } from 'react-redux'
-import { restart } from '../../AC'
+import { Dispatch, Action, bindActionCreators } from 'redux'
 import './index.css'
+import {restartAction} from "../../reducers/session";
 
-class Header extends Component<{restart:any }, {}> {
+interface DispatchProps {
+	restart(): void;
+}
+
+class Header extends Component<DispatchProps> {
 
 	render() {
 		return (
@@ -16,4 +21,11 @@ class Header extends Component<{restart:any }, {}> {
 	}
 }
 
-export default connect(null, {restart})(Header)
+const mapDispatchToProps = (dispatch: Dispatch<Action>):DispatchProps  => bindActionCreators(
+	{
+		restart: () => restartAction()
+	},
+	dispatch
+);
+
+export default connect(null, mapDispatchToProps)(Header)
