@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { restart } from '../../AC'
 import './index.css'
 
-class Header extends Component {
+class Header extends Component<{restart:any }, {}> {
 
 	render() {
 		return (

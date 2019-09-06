@@ -16,7 +16,7 @@ export const mistake = () => {
 	}
 }
 
-export const selectLesson = lesson => {
+export const selectLesson = (lesson:string) => {
 	return {
 		type: 'LESSON_SELECTION',
 		payload: {

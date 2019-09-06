@@ -3,17 +3,17 @@ import { connect } from 'react-redux'
 import { type, mistake } from '../../AC'
 import './index.css'
 
-class TextInput extends Component {
+class TextInput extends Component<{lesson:string, session:any, mistake:any, type:any}> {
 
 	state = {
 		pressedKey: null,
 		offset: 0
 	}
 
-	inputRef = React.createRef()
-	pressedKeyRef = React.createRef()
+	inputRef = React.createRef<HTMLDivElement>()
+	pressedKeyRef = React.createRef<HTMLDivElement>()
 
-	handleKeyPress = ev => {
+	handleKeyPress = (ev:any) => {
 		const { lesson, session } = this.props
 		const { pressedChars, mistakes } = session
 
@@ -49,7 +49,7 @@ class TextInput extends Component {
 		this.inputRef.current.focus()
 	}
 
-	static getDerivedStateFromProps (nextProps) {
+	static getDerivedStateFromProps (nextProps:any) {
 		return nextProps.session.pressedChars === 0 && {offset: 0}
 	}
 
@@ -67,7 +67,7 @@ class TextInput extends Component {
 		return (
 			<div className="cont">
 				<div className="text-input-container">
-					<div className="text-input" onKeyPress={this.handleKeyPress} tabIndex="-1" ref={this.inputRef} style={{transform: `translateX(-${offset}px)`}}>
+					<div className="text-input" onKeyPress={this.handleKeyPress} tabIndex={-1} ref={this.inputRef} style={{transform: `translateX(-${offset}px)`}}>
 						{ lesson }
 					</div>
 					<div className="cover"/>

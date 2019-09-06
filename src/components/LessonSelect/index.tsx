@@ -3,13 +3,13 @@ import { lessons } from '../../constants'
 import { connect } from 'react-redux'
 import { selectLesson, restart } from '../../AC'
 
-class LessonSelect extends Component {
+class LessonSelect extends Component<{restart:any, selectLesson:any}> {
 
 	state = {
 		value: lessons[0]
 	}
 
-	handleChange = ev => {
+	handleChange = (ev:any) => {
 		const { restart, selectLesson } = this.props
 
 		this.setState({
@@ -19,7 +19,7 @@ class LessonSelect extends Component {
 		selectLesson(ev.target.value)
 	}
 
-	getOptions = (lessons) => {
+	getOptions = (lessons:string[]) => {
 		return lessons.map((item, i) => <option value={item} key={i}>Lesson {i+1}</option>)
 	}
 
