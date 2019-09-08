@@ -24,6 +24,7 @@ type Props = ReduxProps & DispatchProps;
 
 class TextInput extends Component<Props, IState> {
 
+	//TODO: try to search ref type
 	private readonly inputRef: any;
 	private readonly pressedKeyRef: any;
 
@@ -71,8 +72,7 @@ class TextInput extends Component<Props, IState> {
 	}
 
 	componentDidMount() {
-		const node = this.inputRef.current
-		node && node.focus()
+		this.restart()
 	}
 
 	static getDerivedStateFromProps (nextProps: Props, prevState: IState): IState | null {
