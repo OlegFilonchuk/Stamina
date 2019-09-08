@@ -1,8 +1,8 @@
 import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
 import { Action, bindActionCreators, Dispatch } from 'redux'
-import { typeAction, mistakeAction, SessionState } from '../../reducers/session'
-import { StoreState } from '../../store'
+import { typeAction, mistakeAction, SessionState } from '@redux/reducers/session'
+import { StoreState } from '@redux/Store'
 import './index.css'
 
 interface IState {

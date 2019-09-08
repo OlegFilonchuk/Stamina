@@ -1,6 +1,6 @@
 import React from 'react'
-import TextInput from './components/TextInput'
-import Header from './components/Header'
+import TextInput from '@components/TextInput'
+import Header from '@components/Header'
 import './App.css'
 
 class App extends React.Component {

@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier"],
+  "defaultSeverity": "warning",
+  "jsRules": {
+    "ordered-imports": false,
+    "object-literal-sort-keys": false
+  },
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "server/*.js",
+      "node_modules/**/*",
+      "**/*.js"
+    ]
+  },
+  "rules": {
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "interface-name": false,
+    "no-console": false,
+    "member-access": false,
+    "class-name": true,
+    "quotemark": [true, "single", "avoid-escape", "avoid-template", "jsx-double"],
+    "semicolon": [true, "always", "strict-bound-class-methods"],
+    "match-default-export-name": true,
+    "prefer-object-spread": true,
+    "no-string-literal": true,
+    "member-ordering": false,
+    "comment-format": false,
+    "object-literal-shorthand": [true, "never"],
+    "no-unused-expression": true
+  }
+}

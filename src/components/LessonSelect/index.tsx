@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { lessons } from '../../constants'
 import { connect } from 'react-redux'
 import { Action, Dispatch, bindActionCreators } from 'redux'
-import { selectLessonAction } from '../../reducers/lesson'
-import { restartAction } from '../../reducers/session'
+import { selectLessonAction } from '@redux/reducers/lesson'
+import { restartAction } from '@redux/reducers/session'
 
 interface DispatchProps {
 	restart(): void;

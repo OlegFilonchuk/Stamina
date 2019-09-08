@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
-import LessonSelect from '../LessonSelect'
+import LessonSelect from '@components/LessonSelect'
 import { connect } from 'react-redux'
 import { Dispatch, Action, bindActionCreators } from 'redux'
 import './index.css'
-import {restartAction} from "../../reducers/session";
+import {restartAction} from '@redux/reducers/session'
 
 interface DispatchProps {
 	restart(): void;
 }
 
 class Header extends Component<DispatchProps> {
-
 	render() {
 		return (
 			<div className="header">

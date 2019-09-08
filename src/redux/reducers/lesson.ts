@@ -1,4 +1,4 @@
-import { lessons } from '../constants'
+import { lessons } from '../../constants'
 import { Action } from 'redux';
 
 const LESSON_SELECTED = "LESSON_SELECTED";
