@@ -47,6 +47,8 @@ class TextInput extends Component<Props, IState> {
 			return
 		}
 
+		this.setState({ pressedKey: ev.key })
+
 		this.pressedKeyRef.current && this.pressedKeyRef.current.classList.toggle('inactive')
 		setTimeout(() => this.pressedKeyRef.current && this.pressedKeyRef.current.classList.toggle('inactive'), 250)
 
@@ -60,7 +62,7 @@ class TextInput extends Component<Props, IState> {
 		const charWidth = this.inputRef.current && this.inputRef.current.scrollWidth / lesson.length
 		const offset = charWidth && (pressedChars + 1) * charWidth
 
-		this.setState({pressedKey: ev.key, offset: offset})
+		this.setState({ offset: offset })
 
 		//move caret
 		this.props.type()
