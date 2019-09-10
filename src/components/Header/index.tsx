@@ -5,6 +5,7 @@ import { Dispatch, Action, bindActionCreators } from 'redux'
 import './index.css'
 import {restartAction} from '@redux/reducers/session'
 
+
 interface DispatchProps {
 	restart(): void;
 }

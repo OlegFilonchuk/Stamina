@@ -12,7 +12,7 @@ export const selectLessonAction = (lesson: string): SetSelectedLessonAction => {
 		type: LESSON_SELECTED,
 		lesson: lesson
 	}
-}
+};
 
 export interface LessonState {
 	lesson: string;
@@ -33,4 +33,4 @@ export const lessonReducer = (state = initialState, action: Action): LessonState
 		default:
 			return state
 	}
-}
+};

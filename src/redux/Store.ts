@@ -10,7 +10,7 @@ export interface StoreState {
 const rootReducer = combineReducers({
     lessonState: lessonReducer,
     sessionState: sessionReducer
-})
+});
 
 export default createStore(
     rootReducer,

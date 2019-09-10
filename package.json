@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/styled-components": "^4.1.19",
     "babel-loader": "^8.0.6",
     "react": "^16.9.0",
     "react-addons-css-transition-group": "^15.6.2",

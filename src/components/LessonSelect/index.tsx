@@ -18,21 +18,21 @@ class LessonSelect extends Component<DispatchProps, IState> {
 
 	state: IState = {
 		value: lessons[0]
-	}
+	};
 
 	handleChange = (ev:React.ChangeEvent<HTMLSelectElement>) => {
-		const { restart, selectLesson } = this.props
+		const { restart, selectLesson } = this.props;
 
 		this.setState({
 			value: ev.target.value
-		})
-		restart()
+		});
+		restart();
 		selectLesson(ev.target.value)
-	}
+	};
 
 	getOptions = (lessons:string[]) => {
 		return lessons.map((item, i) => <option value={item} key={i}>Lesson {i+1}</option>)
-	}
+	};
 
 	render() {
 		return (
