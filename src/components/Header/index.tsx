@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import LessonSelect from '@components/LessonSelect'
 import { connect } from 'react-redux'
 import { Dispatch, Action, bindActionCreators } from 'redux'
-import './index.css'
 import {restartAction} from '@redux/reducers/session'
-
+import { StyledHeader } from './HeaderStyle';
 
 interface DispatchProps {
 	restart(): void;
@@ -13,10 +12,10 @@ interface DispatchProps {
 class Header extends Component<DispatchProps> {
 	render() {
 		return (
-			<div className="header">
+			<StyledHeader>
 				<LessonSelect />
 				<button onClick={this.props.restart}>Restart</button>
-			</div>
+			</StyledHeader>
 		)
 	}
 }

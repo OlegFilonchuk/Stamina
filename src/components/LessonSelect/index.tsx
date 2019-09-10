@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Action, Dispatch, bindActionCreators } from 'redux'
 import { selectLessonAction } from '@redux/reducers/lesson'
 import { restartAction } from '@redux/reducers/session'
+import { StyledLessonSelect } from './LessonSelectStyle';
 
 interface DispatchProps {
 	restart(): void;
@@ -36,14 +37,14 @@ class LessonSelect extends Component<DispatchProps, IState> {
 
 	render() {
 		return (
-			<div>
+			<StyledLessonSelect>
 				<label>
 					Select a lesson:
 					<select value={this.state.value} onChange={this.handleChange}>
 						{this.getOptions(lessons)}
 					</select>
 				</label>
-			</div>
+			</StyledLessonSelect>
 		)
 	}
 }
