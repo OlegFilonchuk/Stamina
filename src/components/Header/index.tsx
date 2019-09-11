@@ -22,7 +22,7 @@ class Header extends Component<DispatchProps> {
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>):DispatchProps  => bindActionCreators(
 	{
-		restart: () => restartAction()
+		restart: restartAction
 	},
 	dispatch
 );

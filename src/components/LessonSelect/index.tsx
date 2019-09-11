@@ -51,8 +51,8 @@ class LessonSelect extends Component<DispatchProps, IState> {
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => bindActionCreators(
 	{
-		selectLesson: (value: string) => selectLessonAction(value),
-		restart: () => restartAction()
+		selectLesson: selectLessonAction,
+		restart: restartAction
 	},
 	dispatch
 );

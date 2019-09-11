@@ -124,8 +124,8 @@ const mapStateToProps = (state: StoreState): ReduxProps => {
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps =>  bindActionCreators(
 	{
-		type: () => typeAction(),
-		mistake: () => mistakeAction()
+		type: typeAction,
+		mistake: mistakeAction
 	},
 	dispatch
 );
