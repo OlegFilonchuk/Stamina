@@ -4,7 +4,7 @@ import { Action } from 'redux';
 const LESSON_SELECTED = "LESSON_SELECTED";
 
 interface SetSelectedLessonAction extends Action {
-	lesson: string;
+	lesson: string | undefined;
 }
 
 export const selectLessonAction = (lesson: string): SetSelectedLessonAction => {
@@ -15,11 +15,11 @@ export const selectLessonAction = (lesson: string): SetSelectedLessonAction => {
 };
 
 export interface LessonState {
-	lesson: string;
+	lesson: string | undefined;
 }
 
 const initialState: LessonState = {
-	lesson: lessons[0]
+	lesson: undefined
 };
 
 export const lessonReducer = (state = initialState, action: Action): LessonState => {

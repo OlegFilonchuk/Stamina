@@ -78,6 +78,12 @@ class TextInput extends Component<Props, IState> {
 		this.restart()
 	}
 
+	componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<IState>, snapshot?: any): void {
+		if(this.props.session.restarted && this.inputRef.current) {
+			this.restart();
+		}
+	}
+
 	static getDerivedStateFromProps (nextProps: Props, prevState: IState): IState | null {
 		return nextProps.session.pressedChars === 0 ? {
 			...prevState,
@@ -93,9 +99,9 @@ class TextInput extends Component<Props, IState> {
 	render() {
 		const { pressedKey, offset } = this.state;
 		const { lesson } = this.props;
-		if (this.inputRef.current && this.props.session.restarted) {
-			this.restart()
-		}
+		// if (this.inputRef.current && this.props.session.restarted) {
+		// 	this.restart()
+		// }
 
 		return (
 			<StyledTextInput>
