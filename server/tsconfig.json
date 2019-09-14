@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "pretty": true,
+    "target": "es6",
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": {
+      "@controller/*": ["./src/controller/*"],
+      "@model/*": [ "./src/model/*" ],
+      "@route/*": [ "./src/route/*" ],
+      "@middleware/*": [ "./src/middleware/*" ],
+      "@util/*": [ "./src/util/*" ]
+    }
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "scripts",
+    "config",
+    "webpack"
+  ]
+}

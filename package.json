@@ -2,6 +2,9 @@
   "private": true,
   "scripts": {
     "start:client": "cd client && yarn start",
-    "install:client": "cd client && yarn install --non-interactive"
+    "install:client": "cd client && yarn install --non-interactive",
+    "start:server": "cd server && yarn start",
+    "install:server": "cd server && yarn install --non-interactive",
+    "build:server": "cd server && yarn build"
   }
 }

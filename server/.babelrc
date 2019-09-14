@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "@babel/plugin-proposal-object-rest-spread",
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@controller": "./src/controller",
+          "@model": "./src/model",
+          "@route": "./src/route",
+          "@util": "./src/util",
+          "@middleware": "./src/middleware"
+        }
+      }
+    ]
+  ],
+  "presets": ["@babel/preset-env"]
+}

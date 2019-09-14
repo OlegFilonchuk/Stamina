@@ -13,6 +13,7 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "react",
+    "outDir": "build/dist",
     "baseUrl": "./",
     "paths": {
       "@components/*": ["./src/components/*"],
@@ -21,5 +22,19 @@
       "@util/*": [ "./src/util/*" ],
       "@webApi/*": [ "./src/webApi/*" ]
     }
-  }
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "config",
+    "webpack",
+    "jest"
+  ]
+
 }
