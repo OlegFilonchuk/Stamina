@@ -12,7 +12,7 @@ interface IState {
 }
 
 interface ReduxProps {
-	lesson: string;
+	lesson: string | undefined;
 	session: SessionState;
 }
 
@@ -26,8 +26,8 @@ type Props = ReduxProps & DispatchProps;
 class TextInput extends Component<Props, IState> {
 
 	//TODO: try to search ref type
-	private readonly inputRef: any;
-	private readonly pressedKeyRef: any;
+	private readonly inputRef: React.RefObject<HTMLDivElement> = createRef();
+	private readonly pressedKeyRef: React.RefObject<HTMLDivElement> = createRef();
 
 	constructor(props: Props) {
 		super(props);
@@ -35,42 +35,41 @@ class TextInput extends Component<Props, IState> {
 			pressedKey: undefined,
 			offset: 0
 		};
-		this.inputRef = createRef();
-		this.pressedKeyRef = createRef();
 	}
 
 	handleKeyPress = (ev: React.KeyboardEvent) => {
 		const { lesson, session } = this.props;
 		const { pressedChars, mistakes } = session;
+		if(lesson) {
+			//check the end of text
+			if (pressedChars === lesson.length) {
+				return
+			}
 
-		//check the end of text
-		if (pressedChars === lesson.length) {
-			return
-		}
+			this.setState({ pressedKey: ev.key });
 
-		this.setState({ pressedKey: ev.key });
+			this.pressedKeyRef.current && this.pressedKeyRef.current.classList.toggle('inactive');
+			setTimeout(() => this.pressedKeyRef.current && this.pressedKeyRef.current.classList.toggle('inactive'), 250);
 
-		this.pressedKeyRef.current && this.pressedKeyRef.current.classList.toggle('inactive');
-		setTimeout(() => this.pressedKeyRef.current && this.pressedKeyRef.current.classList.toggle('inactive'), 250);
+			//mistakes handling
+			if (ev.key !== lesson[pressedChars]) {
+				this.props.mistake();
+				return
+			}
 
-		//mistakes handling
-		if (ev.key !== lesson[pressedChars]) {
-			this.props.mistake();
-			return
-		}
+			//calculating offset to move
+			const charWidth = this.inputRef.current && this.inputRef.current.scrollWidth / lesson.length;
+			const offset = charWidth && (pressedChars + 1) * charWidth;
 
-		//calculating offset to move
-		const charWidth = this.inputRef.current && this.inputRef.current.scrollWidth / lesson.length;
-		const offset = charWidth && (pressedChars + 1) * charWidth;
+			offset && this.setState({ offset: offset });
 
-		this.setState({ offset: offset });
+			//move caret
+			this.props.type();
 
-		//move caret
-		this.props.type();
-
-		//check the end of text
-		if (pressedChars === lesson.length-1) {
-			console.log(`You made ${mistakes} mistakes`)
+			//check the end of text
+			if (pressedChars === lesson.length-1) {
+				console.log(`You made ${mistakes} mistakes`)
+			}
 		}
 	};
 
@@ -99,9 +98,6 @@ class TextInput extends Component<Props, IState> {
 	render() {
 		const { pressedKey, offset } = this.state;
 		const { lesson } = this.props;
-		// if (this.inputRef.current && this.props.session.restarted) {
-		// 	this.restart()
-		// }
 
 		return (
 			<StyledTextInput>
