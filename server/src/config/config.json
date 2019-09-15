@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "root",
+    "database": "stamina-dev",
+    "host": "localhost",
+    "dialect": "postgres",
+    "operatorsAliases": "Op",
+    "multerUrl": "public/images"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "password",
+    "database": "stamina-test",
+    "host": "db-test",
+    "dialect": "postgres",
+    "operatorsAliases": "Op",
+    "multerUrl": "public/images"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "password",
+    "database": "stamina-prod",
+    "host": "db-prod",
+    "dialect": "postgres",
+    "operatorsAliases": "Op",
+    "multerUrl": "/var/www/html/images"
+  }
+}

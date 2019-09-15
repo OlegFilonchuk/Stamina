@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as cors from 'cors';
+import { router } from './router';
 
 export class App {
 
@@ -14,6 +15,7 @@ export class App {
         this.app.use('/public', express.static('public'));
         this.app.use(cors());
         this.app.use(express.json());
+        this.app.use('/api', router);
     }
 
 }
