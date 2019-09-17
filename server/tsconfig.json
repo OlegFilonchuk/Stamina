@@ -5,6 +5,8 @@
     "moduleResolution": "node",
     "pretty": true,
     "target": "es6",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "outDir": "./dist",
     "baseUrl": "./"
   },

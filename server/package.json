@@ -21,7 +21,9 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "pg": "^7.12.1",
+    "reflect-metadata": "^0.1.13",
     "sequelize": "^5.18.4",
+    "sequelize-typescript": "^1.0.0",
     "typescript": "^3.6.3"
   },
   "devDependencies": {

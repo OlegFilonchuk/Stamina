@@ -1,26 +1,18 @@
-import { Model, DataTypes } from 'sequelize';
-import { sequelize } from './index';
+import {Table, Column, Model, CreatedAt, UpdatedAt, DeletedAt, AllowNull} from 'sequelize-typescript';
 
-export class User extends Model {
-    public id!: number; // Note that the `null assertion` `!` is required in strict mode.
-    public name!: string;
+@Table({modelName: 'Users'})
+export class User extends Model<User> {
 
-    // timestamps!
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+    @AllowNull(false)
+    @Column
+    name: string;
+
+    @CreatedAt
+    creationDate: Date;
+
+    @UpdatedAt
+    updatedOn: Date;
+
+    @DeletedAt
+    deletionDate: Date;
 }
-
-User.init({
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-    },
-    name: {
-        type: new DataTypes.STRING(128),
-        allowNull: false,
-    }
-}, {
-    tableName: 'Users',
-    sequelize: sequelize, // this bit is important
-});
