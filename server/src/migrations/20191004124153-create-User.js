@@ -7,17 +7,26 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            name: {
+            nickName: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            email: {
                 type: Sequelize.STRING,
                 allowNull: false,
-                validate: {
-                    notEmpty: true,
-                },
+                unique: true
+            },
+            password: {
+                type: Sequelize.STRING,
+                allowNull: false
             },
             createdAt: {
                 type: Sequelize.DATE
             },
             updatedAt: {
+                type: Sequelize.DATE
+            },
+            deteledAt: {
                 type: Sequelize.DATE
             }
         });

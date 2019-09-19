@@ -1,18 +1,27 @@
-import {Table, Column, Model, CreatedAt, UpdatedAt, DeletedAt, AllowNull} from 'sequelize-typescript';
+import {Table, Column, Model, CreatedAt, UpdatedAt, DeletedAt, AllowNull, Unique} from 'sequelize-typescript';
 
 @Table({modelName: 'Users'})
 export class User extends Model<User> {
 
     @AllowNull(false)
     @Column
-    name: string;
+    nickName: string;
+
+    @AllowNull(false)
+    @Unique
+    @Column
+    email: string;
+
+    @AllowNull(false)
+    @Column
+    password: string;
 
     @CreatedAt
-    creationDate: Date;
+    createdAt: Date;
 
     @UpdatedAt
-    updatedOn: Date;
+    updatedAt: Date;
 
     @DeletedAt
-    deletionDate: Date;
+    deletedAt: Date;
 }
